@@ -1,1 +1,8 @@
-﻿  OpenCVProject1.vcxproj -> C:\Users\ekko3\Desktop\ProjectsVS\OpenCVProject1\x64\Release\OpenCVProject1.exe
+﻿  main.cpp
+C:\Users\ekko3\Documents\GitHub\filtering\OpenCVProject1\OpenCVProject1\main.cpp(44,24): warning C4244: =: преобразование "double" в "uchar", возможна потеря данных
+  Создание кода
+  1 of 85 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  OpenCVProject1.vcxproj -> C:\Users\ekko3\Documents\GitHub\filtering\OpenCVProject1\x64\Release\OpenCVProject1.exe
