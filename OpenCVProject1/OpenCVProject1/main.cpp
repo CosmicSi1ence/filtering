@@ -1,4 +1,4 @@
-#include <opencv2/core.hpp>
+п»ї#include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <iostream>
@@ -9,8 +9,8 @@ using namespace cv;
 using namespace std;
 
 
-class Fil {         //  Класс матрицы изображения - содержит указатель
-public:             //  на первый пиксель, а также размеры изображения
+class Fil {         //  РљР»Р°СЃСЃ РјР°С‚СЂРёС†С‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ - СЃРѕРґРµСЂР¶РёС‚ СѓРєР°Р·Р°С‚РµР»СЊ
+public:             //  РЅР° РїРµСЂРІС‹Р№ РїРёРєСЃРµР»СЊ, Р° С‚Р°РєР¶Рµ СЂР°Р·РјРµСЂС‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
     double* pData;
     int cx, cy;
 
@@ -20,8 +20,8 @@ public:             //  на первый пиксель, а также размеры изображения
         pData = new double[cx * cy];
     }
 
-    Fil operator=(double value) {        //  при присванивании uchar значение
-        for (int i = 0; i < cx * cy; ++i)    //  записывается во все ячейки матрицы
+    Fil operator=(double value) {        //  РїСЂРё РїСЂРёСЃРІР°РЅРёРІР°РЅРёРё uchar Р·РЅР°С‡РµРЅРёРµ
+        for (int i = 0; i < cx * cy; ++i)    //  Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РІРѕ РІСЃРµ СЏС‡РµР№РєРё РјР°С‚СЂРёС†С‹
             *(pData + i) = value;
         return *this;
     }
@@ -42,29 +42,29 @@ public:             //  на первый пиксель, а также размеры изображения
     }
 };
 
-class Img {         //  Класс матрицы изображения - содержит указатель
-public:             //  на первый пиксель, а также размеры изображения
+class Img {         //  РљР»Р°СЃСЃ РјР°С‚СЂРёС†С‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ - СЃРѕРґРµСЂР¶РёС‚ СѓРєР°Р·Р°С‚РµР»СЊ
+public:             //  РЅР° РїРµСЂРІС‹Р№ РїРёРєСЃРµР»СЊ, Р° С‚Р°РєР¶Рµ СЂР°Р·РјРµСЂС‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
     uchar* pData;
     int cx, cy;
 
 
-    Img operator=(Mat m) {  //  при присванивании Mat копируются размеры
-        pData = m.data;     //  изображения и указатель на первый пиксель
+    Img operator=(Mat m) {  //  РїСЂРё РїСЂРёСЃРІР°РЅРёРІР°РЅРёРё Mat РєРѕРїРёСЂСѓСЋС‚СЃСЏ СЂР°Р·РјРµСЂС‹
+        pData = m.data;     //  РёР·РѕР±СЂР°Р¶РµРЅРёСЏ Рё СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ РїРёРєСЃРµР»СЊ
         cx = m.rows;
         cy = m.cols;
         return *this;
     }
-    Img operator=(uchar value) {        //  при присванивании uchar значение
-        for (int i = 0; i < cx * cy; ++i)    //  записывается во все ячейки матрицы
+    Img operator=(uchar value) {        //  РїСЂРё РїСЂРёСЃРІР°РЅРёРІР°РЅРёРё uchar Р·РЅР°С‡РµРЅРёРµ
+        for (int i = 0; i < cx * cy; ++i)    //  Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РІРѕ РІСЃРµ СЏС‡РµР№РєРё РјР°С‚СЂРёС†С‹
             *(pData + i) = value;
         return *this;
     }
 
-    //      далее реализация оператора индексации [ ][ ]:
+    //      РґР°Р»РµРµ СЂРµР°Р»РёР·Р°С†РёСЏ РѕРїРµСЂР°С‚РѕСЂР° РёРЅРґРµРєСЃР°С†РёРё [ ][ ]:
 
-    //  доступ к элементам матрицы: первые  [ ] - cx - по горизонтали
-    //                              вторе   [ ] - cy - по вертикали
-    //  пример: a[2][8] - третий столбец, девятая строка
+    //  РґРѕСЃС‚СѓРї Рє СЌР»РµРјРµРЅС‚Р°Рј РјР°С‚СЂРёС†С‹: РїРµСЂРІС‹Рµ  [ ] - cx - РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
+    //                              РІС‚РѕСЂРµ   [ ] - cy - РїРѕ РІРµСЂС‚РёРєР°Р»Рё
+    //  РїСЂРёРјРµСЂ: a[2][8] - С‚СЂРµС‚РёР№ СЃС‚РѕР»Р±РµС†, РґРµРІСЏС‚Р°СЏ СЃС‚СЂРѕРєР°
 
     class Iterator {
     public:
@@ -78,7 +78,7 @@ public:             //  на первый пиксель, а также размеры изображения
     Iterator operator[](int i) { return pData + i * cy; }
 };
 
-Fil box(int k_filter) {     //  Создание матрицы коэффициентов усредняющего фильтра
+Fil box(int k_filter) {     //  РЎРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ СѓСЃСЂРµРґРЅСЏСЋС‰РµРіРѕ С„РёР»СЊС‚СЂР°
     Fil filter(k_filter);
     filter = 1. / k_filter / k_filter;
     return filter;
@@ -100,20 +100,20 @@ Fil gaussian(int k_filter, double sigma) {
 
 void filter2d(Mat img, Fil filter) {
     
-    int k_filter = filter.cx;     //  длина фильтра
+    int k_filter = filter.cx;     //  РґР»РёРЅР° С„РёР»СЊС‚СЂР°
 
-    Mat img_pad(img.rows + k_filter - 1, img.cols + k_filter - 1, CV_8UC1); //  создание матрицы дополненного изображения
-    //  Переводим изображения в класс Img, чтобы было по ним удобно итерироваться через индексацию [ ][ ]:
+    Mat img_pad(img.rows + k_filter - 1, img.cols + k_filter - 1, CV_8UC1); //  СЃРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+    //  РџРµСЂРµРІРѕРґРёРј РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ РєР»Р°СЃСЃ Img, С‡С‚РѕР±С‹ Р±С‹Р»Рѕ РїРѕ РЅРёРј СѓРґРѕР±РЅРѕ РёС‚РµСЂРёСЂРѕРІР°С‚СЊСЃСЏ С‡РµСЂРµР· РёРЅРґРµРєСЃР°С†РёСЋ [ ][ ]:
     Img img_padM;
     img_padM = img_pad;
     Img imgM;
     imgM = img;
 
     int pad = (k_filter - 1) / 2;
-    for (int i = 0; i < img_padM.cx; i++) {     //  зеркалирование крев дополненного изображения
+    for (int i = 0; i < img_padM.cx; i++) {     //  Р·РµСЂРєР°Р»РёСЂРѕРІР°РЅРёРµ РєСЂРµРІ РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
         for (int j = 0; j < img_padM.cy; j++) {
 
-            //  углы изображения
+            //  СѓРіР»С‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
             if (i < pad && j < pad)
                 img_padM[i][j] = imgM[-i+(pad-1)][-j+(pad-1)];
             if (i < pad && j >= imgM.cy + pad)
@@ -123,7 +123,7 @@ void filter2d(Mat img, Fil filter) {
             if (i >= imgM.cx + pad && j >= imgM.cy + pad)
                 img_padM[i][j] = imgM[(imgM.cx + pad)-i + (imgM.cx - 1)][(imgM.cy + pad) -j + (imgM.cy - 1)];
 
-            //  края изображения (без углов)
+            //  РєСЂР°СЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ (Р±РµР· СѓРіР»РѕРІ)
             if (i < pad && j >= pad && j < imgM.cy + pad)
                 img_padM[i][j] = imgM[-i+(pad-1)][j-pad];
             if (i >= pad && i < imgM.cx + pad && j < pad)
@@ -133,15 +133,15 @@ void filter2d(Mat img, Fil filter) {
             if (i >= imgM.cx + pad && j >= pad && j < imgM.cy + pad)
                 img_padM[i][j] = imgM[(imgM.cx + pad) -i + (imgM.cx - 1)][j - pad];
             
-            //  основная область - без отражения
+            //  РѕСЃРЅРѕРІРЅР°СЏ РѕР±Р»Р°СЃС‚СЊ - Р±РµР· РѕС‚СЂР°Р¶РµРЅРёСЏ
             if (i >= pad && i < imgM.cx + pad && j >= pad && j < imgM.cy + pad)
                 img_padM[i][j] = imgM[i - pad][j - pad];
         }
     }
-    bool togglePad = true;     // true/false , чтобы вкл./выкл. отображение дополненного изображения
+    bool togglePad = true;     // true/false , С‡С‚РѕР±С‹ РІРєР»./РІС‹РєР». РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
     if (togglePad) {
         namedWindow("|TEST| Padded image", WINDOW_AUTOSIZE);
-        imshow("|TEST| Padded image", img_pad);                    //   выводим дополненное изображение
+        imshow("|TEST| Padded image", img_pad);                    //   РІС‹РІРѕРґРёРј РґРѕРїРѕР»РЅРµРЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
         moveWindow("|TEST| Padded image", 2 * (img.cols + 1), 65);
     }
 
@@ -150,13 +150,13 @@ void filter2d(Mat img, Fil filter) {
     for (int i = 0; i < k_filter; ++i) {
         for (int j = 0; j < k_filter; ++j) {
             kk += filter[i][j];
-            //cout << filter[i][j] << "\t\t";   //вывод коэффициентов фильтра
+            //cout << filter[i][j] << "\t\t";   //РІС‹РІРѕРґ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ С„РёР»СЊС‚СЂР°
         }
         //cout << endl;
     }
     cout << endl << "Brightness loss:\t" << (1 - kk) * 100 << "%" << endl << endl;
 
-    for (int i = 0; i < imgM.cx; ++i) {        //  двумерная свертка дополненного изображения с матрицей фильтра
+    for (int i = 0; i < imgM.cx; ++i) {        //  РґРІСѓРјРµСЂРЅР°СЏ СЃРІРµСЂС‚РєР° РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃ РјР°С‚СЂРёС†РµР№ С„РёР»СЊС‚СЂР°
         for (int j = 0; j < imgM.cy; ++j) {
             Mat roi(img_pad, Rect(j, i, k_filter, k_filter));
             double local_conv = 0;
@@ -173,28 +173,30 @@ void filter2d(Mat img, Fil filter) {
 
 
 int main(){
-    ShowWindow(GetConsoleWindow(), SW_HIDE);    //     прячем назойливую консоль (переключение SH_SHOW / SH_HIDE)
+    ShowWindow(GetConsoleWindow(), SW_HIDE);    //     РїСЂСЏС‡РµРј РЅР°Р·РѕР№Р»РёРІСѓСЋ РєРѕРЅСЃРѕР»СЊ (РїРµСЂРµРєР»СЋС‡РµРЅРёРµ SH_SHOW / SH_HIDE)
 
-    char filename[] = "image.jpg";      //  путь к файлу: ../OpenCVProject1/OpenCVProject1/image.jpg
+    char filename[] = "image.jpg";      //  РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ: ../OpenCVProject1/OpenCVProject1/image.jpg
     char fullFilename[MAX_PATH];
     GetFullPathNameA(filename, MAX_PATH, fullFilename, nullptr);
 
     cout << "Image file path:\t" << fullFilename << endl << endl;
-    Mat img = imread(fullFilename, IMREAD_GRAYSCALE);   //  считываем изображение из файла
-                                                        //  в формате градаций серого (одноканальный режим)
+    Mat img = imread(fullFilename, IMREAD_GRAYSCALE);   //  СЃС‡РёС‚С‹РІР°РµРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ РёР· С„Р°Р№Р»Р°
+                                                        //  РІ С„РѕСЂРјР°С‚Рµ РіСЂР°РґР°С†РёР№ СЃРµСЂРѕРіРѕ (РѕРґРЅРѕРєР°РЅР°Р»СЊРЅС‹Р№ СЂРµР¶РёРј)
+
+    cout << "Hello";
 
     namedWindow("Before filtering", WINDOW_AUTOSIZE);
-    imshow("Before filtering", img);                        //  выводим исходное изображение
+    imshow("Before filtering", img);                        //  РІС‹РІРѕРґРёРј РёСЃС…РѕРґРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
     moveWindow("Before filtering", 0, 65);
 
-    //  Выбор фильтра (нужное раскомментить, ненужное закомментить):
+    //  Р’С‹Р±РѕСЂ С„РёР»СЊС‚СЂР° (РЅСѓР¶РЅРѕРµ СЂР°СЃРєРѕРјРјРµРЅС‚РёС‚СЊ, РЅРµРЅСѓР¶РЅРѕРµ Р·Р°РєРѕРјРјРµРЅС‚РёС‚СЊ):
     //Fil filter = box(9);
     Fil filter = gaussian(13, 2.5);
 
-    filter2d(img, filter);       //  фильтрация
+    filter2d(img, filter);       //  С„РёР»СЊС‚СЂР°С†РёСЏ
 
     namedWindow("After filtering", WINDOW_AUTOSIZE);
-    imshow("After filtering", img);                         //  выводим изображение после фильтрации
+    imshow("After filtering", img);                         //  РІС‹РІРѕРґРёРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїРѕСЃР»Рµ С„РёР»СЊС‚СЂР°С†РёРё
     moveWindow("After filtering", img.cols + 1, 65);
 
     waitKey(0);
