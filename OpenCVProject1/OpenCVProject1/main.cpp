@@ -36,6 +36,10 @@ public:             //  на первый пиксель, а также размеры изображени€
     };
 
     Iterator operator[](int i) { return pData + i * cy; }
+
+    ~Fil() {
+        delete[] pData;
+    }
 };
 
 class Img {         //   ласс матрицы изображени€ - содержит указатель
