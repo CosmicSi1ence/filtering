@@ -1,4 +1,4 @@
-#include "filter2d.h"
+п»ї#include "filter2d.h"
 
 //#include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
@@ -10,21 +10,21 @@ using namespace cv;
 
 void filter2d(Mat img, Fil filter) {
 
-    int k_filter = filter.cx;     //  длина фильтра
+    int k_filter = filter.cx;     //  РґР»РёРЅР° С„РёР»СЊС‚СЂР°
 
-    Mat img_pad(img.rows + k_filter - 1, img.cols + k_filter - 1, CV_8UC1); //  создание матрицы дополненного изображения
+    Mat img_pad(img.rows + k_filter - 1, img.cols + k_filter - 1, CV_8UC1); //  СЃРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 
-    //  Переводим изображения в класс Img, чтобы было по ним удобно итерироваться через индексацию [ ][ ]:
+    //  РџРµСЂРµРІРѕРґРёРј РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ РєР»Р°СЃСЃ Img, С‡С‚РѕР±С‹ Р±С‹Р»Рѕ РїРѕ РЅРёРј СѓРґРѕР±РЅРѕ РёС‚РµСЂРёСЂРѕРІР°С‚СЊСЃСЏ С‡РµСЂРµР· РёРЅРґРµРєСЃР°С†РёСЋ [ ][ ]:
     Img img_padM;
     img_padM = img_pad;
     Img imgM;
     imgM = img;
 
     int pad = (k_filter - 1) / 2;
-    for (int i = 0; i < img_padM.cx; i++) {     //  зеркалирование крев дополненного изображения + заполнение центра исходным
+    for (int i = 0; i < img_padM.cx; i++) {     //  Р·РµСЂРєР°Р»РёСЂРѕРІР°РЅРёРµ РєСЂРµРІ РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ + Р·Р°РїРѕР»РЅРµРЅРёРµ С†РµРЅС‚СЂР° РёСЃС…РѕРґРЅС‹Рј
         for (int j = 0; j < img_padM.cy; j++) {
 
-            //  углы изображения
+            //  СѓРіР»С‹ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
             if (i < pad && j < pad)
                 img_padM[i][j] = imgM[-i + (pad - 1)][-j + (pad - 1)];
             if (i < pad && j >= imgM.cy + pad)
@@ -34,7 +34,7 @@ void filter2d(Mat img, Fil filter) {
             if (i >= imgM.cx + pad && j >= imgM.cy + pad)
                 img_padM[i][j] = imgM[(imgM.cx + pad) - i + (imgM.cx - 1)][(imgM.cy + pad) - j + (imgM.cy - 1)];
 
-            //  края изображения (без углов)
+            //  РєСЂР°СЏ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ (Р±РµР· СѓРіР»РѕРІ)
             if (i < pad && j >= pad && j < imgM.cy + pad)
                 img_padM[i][j] = imgM[-i + (pad - 1)][j - pad];
             if (i >= pad && i < imgM.cx + pad && j < pad)
@@ -44,15 +44,15 @@ void filter2d(Mat img, Fil filter) {
             if (i >= imgM.cx + pad && j >= pad && j < imgM.cy + pad)
                 img_padM[i][j] = imgM[(imgM.cx + pad) - i + (imgM.cx - 1)][j - pad];
 
-            //  основная область - без отражения
+            //  РѕСЃРЅРѕРІРЅР°СЏ РѕР±Р»Р°СЃС‚СЊ - Р±РµР· РѕС‚СЂР°Р¶РµРЅРёСЏ
             if (i >= pad && i < imgM.cx + pad && j >= pad && j < imgM.cy + pad)
                 img_padM[i][j] = imgM[i - pad][j - pad];
         }
     }
-    bool togglePad = true;     // true/false , чтобы вкл./выкл. отображение дополненного изображения
+    bool togglePad = true;     // true/false , С‡С‚РѕР±С‹ РІРєР»./РІС‹РєР». РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
     if (togglePad) {
         namedWindow("|TEST| Padded image", WINDOW_AUTOSIZE);
-        imshow("|TEST| Padded image", img_pad);                    //   выводим дополненное изображение
+        imshow("|TEST| Padded image", img_pad);                    //   РІС‹РІРѕРґРёРј РґРѕРїРѕР»РЅРµРЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
         moveWindow("|TEST| Padded image", 2 * (img.cols + 1), 65);
     }
 
@@ -61,13 +61,13 @@ void filter2d(Mat img, Fil filter) {
     for (int i = 0; i < k_filter; ++i) {
         for (int j = 0; j < k_filter; ++j) {
             kk += filter[i][j];
-            //cout << filter[i][j] << "\t\t";   //вывод коэффициентов фильтра
+            //cout << filter[i][j] << "\t\t";   //РІС‹РІРѕРґ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ С„РёР»СЊС‚СЂР°
         }
         //cout << endl;
     }
     //cout << endl << "Brightness loss:\t" << (1 - kk) * 100 << "%" << endl << endl;
 
-    for (int i = 0; i < imgM.cx; ++i) {        //  двумерная свертка дополненного изображения с матрицей фильтра
+    for (int i = 0; i < imgM.cx; ++i) {        //  РґРІСѓРјРµСЂРЅР°СЏ СЃРІРµСЂС‚РєР° РґРѕРїРѕР»РЅРµРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃ РјР°С‚СЂРёС†РµР№ С„РёР»СЊС‚СЂР°
         for (int j = 0; j < imgM.cy; ++j) {
             Mat roi(img_pad, Rect(j, i, k_filter, k_filter));
             double local_conv = 0;

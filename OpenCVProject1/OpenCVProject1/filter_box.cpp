@@ -1,6 +1,6 @@
-#include "filter_box.h"
+п»ї#include "filter_box.h"
 
-Fil box(int k_filter) {     //  Создание матрицы коэффициентов усредняющего фильтра
+Fil box(int k_filter) {     //  РЎРѕР·РґР°РЅРёРµ РјР°С‚СЂРёС†С‹ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ СѓСЃСЂРµРґРЅСЏСЋС‰РµРіРѕ С„РёР»СЊС‚СЂР°
     Fil filter(k_filter);
     filter = 1. / k_filter / k_filter;
     return filter;

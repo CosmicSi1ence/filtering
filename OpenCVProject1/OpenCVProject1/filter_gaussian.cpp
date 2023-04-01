@@ -1,4 +1,4 @@
-#include "filter_gaussian.h"
+﻿#include "filter_gaussian.h"
 #include "func_gaus.h"
 
 Fil gaussian(int k_filter, double sigma) {

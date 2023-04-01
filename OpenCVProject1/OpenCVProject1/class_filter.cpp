@@ -1,4 +1,4 @@
-#include "class_filter.h"
+п»ї#include "class_filter.h"
 
 Fil::Fil(int cx) {
     this->cx = cx;
@@ -6,8 +6,8 @@ Fil::Fil(int cx) {
     pData = new double[cx * cy];
 }
 
-Fil Fil::operator=(double value) {        //  при присванивании uchar значение
-    for (int i = 0; i < cx * cy; ++i)    //  записывается во все ячейки матрицы
+Fil Fil::operator=(double value) {        //  РїСЂРё РїСЂРёСЃРІР°РЅРёРІР°РЅРёРё uchar Р·РЅР°С‡РµРЅРёРµ
+    for (int i = 0; i < cx * cy; ++i)    //  Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РІРѕ РІСЃРµ СЏС‡РµР№РєРё РјР°С‚СЂРёС†С‹
         *(pData + i) = value;
     return *this;
 }

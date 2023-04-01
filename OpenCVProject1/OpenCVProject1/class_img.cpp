@@ -1,14 +1,14 @@
-#include "class_img.h"
+п»ї#include "class_img.h"
 
-Img Img::operator=(cv::Mat m) {  //  при присванивании Mat копируются размеры
-    pData = m.data;     //  изображения и указатель на первый пиксель
+Img Img::operator=(cv::Mat m) {  //  РїСЂРё РїСЂРёСЃРІР°РЅРёРІР°РЅРёРё Mat РєРѕРїРёСЂСѓСЋС‚СЃСЏ СЂР°Р·РјРµСЂС‹
+    pData = m.data;     //  РёР·РѕР±СЂР°Р¶РµРЅРёСЏ Рё СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІС‹Р№ РїРёРєСЃРµР»СЊ
     cx = m.rows;
     cy = m.cols;
     return *this;
 }
 
-Img Img::operator=(uchar value) {        //  при присванивании uchar значение
-    for (int i = 0; i < cx * cy; ++i)    //  записывается во все ячейки матрицы
+Img Img::operator=(uchar value) {        //  РїСЂРё РїСЂРёСЃРІР°РЅРёРІР°РЅРёРё uchar Р·РЅР°С‡РµРЅРёРµ
+    for (int i = 0; i < cx * cy; ++i)    //  Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РІРѕ РІСЃРµ СЏС‡РµР№РєРё РјР°С‚СЂРёС†С‹
         *(pData + i) = value;
     return *this;
 }
