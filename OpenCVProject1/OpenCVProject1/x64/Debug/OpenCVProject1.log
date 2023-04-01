@@ -1,3 +1,10 @@
-﻿  main.cpp
-C:\Users\ekko3\Documents\GitHub\filtering\OpenCVProject1\OpenCVProject1\main.cpp(168,26): warning C4244: =: преобразование "double" в "uchar", возможна потеря данных
+﻿  class_filter.cpp
+  class_img.cpp
+  filter2d.cpp
+C:\Users\ekko3\Documents\GitHub\filtering\OpenCVProject1\OpenCVProject1\filter2d.cpp(79,26): warning C4244: =: преобразование "double" в "uchar", возможна потеря данных
+  filter_box.cpp
+  filter_gaussian.cpp
+  func_gaus.cpp
+  main.cpp
+  Создание кода...
   OpenCVProject1.vcxproj -> C:\Users\ekko3\Documents\GitHub\filtering\OpenCVProject1\x64\Debug\OpenCVProject1.exe
